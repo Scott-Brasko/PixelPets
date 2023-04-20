@@ -25,11 +25,13 @@ h1{
 }
 
 #buttonContainer {
+  position: relative;
   width: 350px;
   height: 50px;
   display: flex;
   justify-content: space-between;
   line-height: 0;
+  z-index: 900;
 }
 
 #container button {
@@ -40,6 +42,7 @@ h1{
   position: relative;
   width: 100px;
   height: 100px;
+  z-index: 899;
   /* background-color: white; */
 }
 
@@ -47,6 +50,7 @@ h1{
   position: relative;
   width: 128px;
   height: 128px;
+  z-index: 899;
   /* left: 0px; */
 }
 
@@ -70,6 +74,7 @@ h1{
   position: absolute;
   width: 25px;
   height: 10px;
+  z-index: 1000;
 }
 
 .btn {
