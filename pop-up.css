@@ -1,10 +1,17 @@
 body {
-  background-image: url(https://media.istockphoto.com/id/1309764268/vector/fence-and-green-lawn-rural-landscape-background-vector-garden-backyard-with-wooden-hedge.jpg?s=612x612&w=0&k=20&c=BBkjcHwOQwBdRyHgXbb0iFtXTU26djYloUyLVv0SRM4=);
-  background-size:auto;
+  /* background-image: "./assets/backgrounds/yard.jpg"; */
+  /* background-size:auto; */
 }
 
 h1{
   font-size: 1.2rem;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -900;
 }
 
 #container {

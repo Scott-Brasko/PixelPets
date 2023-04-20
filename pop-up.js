@@ -7,6 +7,12 @@ function main() {
   const container = document.createElement('div');
   container.setAttribute('id', 'container');
 
+  // create background img
+  const background = document.createElement('img');
+  background.setAttribute('src', './assets/backgrounds/yard.jpg');
+  background.setAttribute('id', 'background');
+  body.appendChild(background);
+
   const buttonContainer = document.createElement('div');
   buttonContainer.setAttribute('id', 'buttonContainer');
 
