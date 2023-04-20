@@ -10,7 +10,7 @@ class Dog {
     this.owner = owner;
 
     // frame prop - keep track of current frame
-    this.frame = 0;
+    this.frame = 1;
 
     // state prop - default idle
     // idle
@@ -22,7 +22,7 @@ class Dog {
     // create img & append to HTML
     this.node = document.createElement('img');
     this.node.setAttribute('id', 'dog');
-    this.node.setAttribute('src',`src/assets/${this.state}/${this.state}-${this.frame}`);
+    this.node.setAttribute('src',`./assets/${this.state}/${this.state}-${this.frame}.png`);
     body.appendChild(this.node);
     // recursively call monitor method (checks state)
     // use settime out
