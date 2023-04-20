@@ -3,8 +3,13 @@
   "name": "TBD",
   "description": "Base Level Extension",
   "version": "1.0",
+  "icons": {
+    "16": "/assets/walk/walk-1.png",
+    "48": "/assets/walk/walk-1.png",
+    "128": "/assets/walk/walk-1.png"
+  },
   "action": {
     "default_popup": "pop-up.html",
-    "default_icon": "hello_extensions.png"
+    "default_icon": "/assets/walk/walk-1.png"
   }
 }
