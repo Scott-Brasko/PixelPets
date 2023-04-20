@@ -4,13 +4,13 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "icons": {
-    "16": "/assets/sat-1_128x128.png",
-    "48": "/assets/sat-1_128x128.png",
-    "128": "/assets/run-1_128x128.png"
+    "16": "/assets/sat-1-big.png",
+    "48": "/assets/sat-1-big.png",
+    "128": "/assets/sat-1-big.png"
   },
   "action": {
     "default_popup": "pop-up.html",
-    "default_icon": "/assets/sat-1_128x128.png"
+    "default_icon": "/assets/sat-1-big.png"
   },
   "background": {
     "service_worker": "background.js"
