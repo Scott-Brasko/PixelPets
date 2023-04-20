@@ -68,7 +68,7 @@ function main() {
   // updatePetName() -> breaks code :(
 
   // updated petName & ownerName once storage sync works
-  const dog = new Dog(container, `Bark Twain`, `Chewberry Mudman`);
+  const dog = new Dog(container, `PixelPets`, `Chewberry Mudman`);
   const title = document.querySelector('h1');
   title.setAttribute('style', `font-family: 'Press Start 2P'`);
   title.innerHTML = dog.name;
