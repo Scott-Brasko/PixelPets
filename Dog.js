@@ -24,11 +24,14 @@ class Dog {
     this.petState = false;
     this.regularStateArray = ['idle1', 'idle2'];
 
+    // feed sequence
     this.feedStateArray = ['sit', 'sniff', 'sniff', 'sniff', 'sniff'];
 
+    // pet sequence
     this.petStateArray = ['sit', 'sat', 'sat', 'sat'];
     this.specialIndex = 0;
 
+    // walk duration
     this.timeToWalk = false;
     this.timeToWalkIncrement = 0;
     this.timeToWalkMax = 80;
@@ -281,6 +284,7 @@ class Dog {
       if (this.heartCounter >= this.heartMax) {
         const heart = document.querySelector('#heart');
         heart.remove();
+        this.heartCounter = 0;
         this.heartOn = false;
       }
     }

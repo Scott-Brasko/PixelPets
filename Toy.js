@@ -12,6 +12,7 @@ class Toy {
     this.onGroundCounter = 0;
 
     this.peaked = false;
+    // where bone starts
     this.topPosition = 100;
     this.leftPosition = Math.floor(Math.random() * Number(getComputedStyle(container).width.replace('px', '')));
     this.rotateVal = 0;
@@ -46,7 +47,8 @@ class Toy {
       return setTimeout(this.move.bind(this), this.SPEED);
     }
 
-    if (this.topPosition >= 160) {
+
+    if (this.topPosition >= 170) {
       this.moving = false;
       // this.node.style.transform = `rotate(0deg)`;
       return setTimeout(this.move.bind(this), this.SPEED);
@@ -54,7 +56,7 @@ class Toy {
 
     if (this.peaked === true || this.topPosition <= 55) {
       this.peaked = true;
-      this.node.style.top = `${this.topPosition += 5}px`;
+      this.node.style.top = `${this.topPosition += 3.95}px`;
       this.node.style.transform = `rotate(${this.rotateVal += 20}deg)`;
       return setTimeout(this.move.bind(this), this.SPEED);      
     }
