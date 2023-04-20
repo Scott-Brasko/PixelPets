@@ -8,6 +8,8 @@ const body = document.querySelector('body');
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
 
+const dog = new Dog(body, petName, ownerName);
+
 const feedBtn = document.createElement('button');
 feedBtn.setAttribute('id', 'feedBtn');
 feedBtn.classList.add('btn');
