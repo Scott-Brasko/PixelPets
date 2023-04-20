@@ -1,10 +1,17 @@
 body {
-  /* background-image: "./assets/backgrounds/yard.jpg"; */
-  /* background-size:auto; */
+  background-image: url(https://media.istockphoto.com/id/1309764268/vector/fence-and-green-lawn-rural-landscape-background-vector-garden-backyard-with-wooden-hedge.jpg?s=612x612&w=0&k=20&c=BBkjcHwOQwBdRyHgXbb0iFtXTU26djYloUyLVv0SRM4=);
+  background-size:cover;
+  background-position: right;
 }
 
 h1{
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-left: 5vw;
+  margin-top: 10vh;
+  margin-right: 3vw;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
 }
 
 #background {
@@ -21,15 +28,14 @@ h1{
   height: 30px;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   flex-direction: column;
+  line-height: 0;
 }
 
 #buttonContainer {
   width: 350px;
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 20px; */
 }
 
 
