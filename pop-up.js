@@ -39,7 +39,9 @@ function main() {
   let petName;
   let ownerName;
 
-  startBtn.addEventListener('click', ()=>{
+  const startButton = document.querySelector('#startBtn');
+
+  startButton.addEventListener('click', ()=>{
     if (!gameStart){
       ownerName = prompt('What\'s your name?', 'Chewberry Mudman');
       petName = prompt('How would you like to name your pet?', 'Jimmy Chew');
@@ -52,8 +54,18 @@ function main() {
     }
   })
 
-  // updated petName & ownerName
-  const dog = new Dog(body, `${petName}`, `${ownerName}`);
+  function updatePetName (){
+    chrome.storage.local.get(["petName"], (res) => {
+      const petName = res.petName ?? 'Bark Twain'
+      const title = document.querySelector('h1');
+      title.innderHTML = `Hi ${ownerName}, I'm your furry friend ${petName}`;
+    })
+  }
+
+  // updatePetName() -> breaks code :(
+
+  // updated petName & ownerName once storage sync works
+  const dog = new Dog(body, `Bark Twain`, `Chewberry Mudman`);
   const title = document.querySelector('h1');
   title.setAttribute('style', `font-family: 'Press Start 2P'`);
   title.innerHTML = dog.name;
@@ -85,6 +97,6 @@ function main() {
 
   throwToyBtn.addEventListener('click', () => {
     new Toy(body);
-    
-  });  
+
+  });
 }

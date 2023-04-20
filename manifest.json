@@ -4,13 +4,13 @@
   "description": "Get ready to unleash your inner corgi lover! With this Chrome extension game, you can pamper your own virtual pup with pets, treats, and toys. Perfect for a quick break from work or study. Let's have some corgi fun!",
   "version": "1.0",
   "icons": {
-    "16": "/assets/sat-1-big.png",
-    "48": "/assets/sat-1-big.png",
-    "128": "/assets/sat-1-big.png"
+    "16": "/assets/kiss.png",
+    "48": "/assets/kiss.png",
+    "128": "/assets/kiss.png"
   },
   "action": {
     "default_popup": "pop-up.html",
-    "default_icon": "/assets/sat-1-big.png"
+    "default_icon": "/assets/kiss.png"
   },
   "permissions": ["storage"],
   "background": {
