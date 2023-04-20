@@ -35,7 +35,7 @@ function main() {
 
 
   // create background array to iterate through
-  const backgroundArr = ['./assets/backgrounds/yard.jpg', './assets/backgrounds/field.png', './assets/backgrounds/trees.jpg']
+  const backgroundArr = ['./assets/backgrounds/yard.jpg', './assets/backgrounds/field.jpg', './assets/backgrounds/trees.jpg']
   let backgroundIndex = 1;
 
   // create background img
