@@ -208,7 +208,7 @@ class Dog {
     if (
       this.moveArray[this.moveIndex] === 'run' &&
       this.frame === 3 &&
-      Math.floor(Math.random() * 10) === 0
+      Math.floor(Math.random() * 15) === 0
     ) {
       this.frame++;
       return setTimeout(this.jump.bind(this), this.SPEED);
