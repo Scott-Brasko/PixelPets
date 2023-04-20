@@ -47,8 +47,8 @@ function main() {
         const title = document.querySelector('h1');
         title.innerHTML = `I'm your furry friend ${petName}`;
         buttonContainer.appendChild(feedBtn);
-  buttonContainer.appendChild(petBtn);
-  buttonContainer.appendChild(throwToyBtn);
+        buttonContainer.appendChild(petBtn);
+        buttonContainer.appendChild(throwToyBtn);
       });
       // const petName = res.petName;
       // const title = document.querySelector('h1');
@@ -58,7 +58,7 @@ function main() {
 
   let petName;
   let ownerName;
-  
+
   buttonContainer.appendChild(startBtn);
   const startButton = document.querySelector('#startBtn');
 
@@ -73,7 +73,7 @@ function main() {
         ownerName: ownerName,
       });
       // chrome.storage.sync.get('petName', (res) => console.log(res));
-      updatePetName() //->
+      updatePetName(); //->
       buttonContainer.appendChild(feedBtn);
       buttonContainer.appendChild(petBtn);
       buttonContainer.appendChild(throwToyBtn);
@@ -127,6 +127,6 @@ function main() {
   throwToyBtn.addEventListener('click', () => {
     new Toy(body);
   });
-  
+
   container.appendChild(buttonContainer);
 }
