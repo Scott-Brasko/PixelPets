@@ -31,10 +31,10 @@ function main() {
   throwToyBtn.classList.add('btn');
   throwToyBtn.textContent = 'Throw Toy';
 
-  container.appendChild(startBtn);
-  container.appendChild(feedBtn);
-  container.appendChild(petBtn);
-  container.appendChild(throwToyBtn);
+  // container.appendChild(startBtn);
+  // container.appendChild(feedBtn);
+  // container.appendChild(petBtn);
+  // container.appendChild(throwToyBtn);
   body.appendChild(container);
 
   // chrome.storage.sync.clear();
@@ -46,6 +46,9 @@ function main() {
         const petName = res.petName;
         const title = document.querySelector('h1');
         title.innerHTML = `I'm your furry friend ${petName}`;
+        buttonContainer.appendChild(feedBtn);
+  buttonContainer.appendChild(petBtn);
+  buttonContainer.appendChild(throwToyBtn);
       });
       // const petName = res.petName;
       // const title = document.querySelector('h1');
@@ -55,15 +58,15 @@ function main() {
 
   let petName;
   let ownerName;
-
+  
+  buttonContainer.appendChild(startBtn);
   const startButton = document.querySelector('#startBtn');
 
-  startButton.addEventListener('click', () => {
+  startBtn.addEventListener('click', () => {
     if (!gameStart) {
       // ownerName = prompt("What's your name?", 'Chewberry Mudman');
       petName = prompt('How would you like to name your pet?', 'Jimmy Chew');
       gameStart = true;
-      console.log(petName);
       chrome.storage.sync.set({
         gameState: gameStart,
         petName: petName,
@@ -71,6 +74,9 @@ function main() {
       });
       // chrome.storage.sync.get('petName', (res) => console.log(res));
       updatePetName() //->
+      buttonContainer.appendChild(feedBtn);
+      buttonContainer.appendChild(petBtn);
+      buttonContainer.appendChild(throwToyBtn);
     }
   });
 
@@ -121,9 +127,6 @@ function main() {
   throwToyBtn.addEventListener('click', () => {
     new Toy(body);
   });
+  
   container.appendChild(buttonContainer);
-  buttonContainer.appendChild(startBtn);
-  buttonContainer.appendChild(feedBtn);
-  buttonContainer.appendChild(petBtn);
-  buttonContainer.appendChild(throwToyBtn);
 }
