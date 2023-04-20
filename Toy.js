@@ -4,7 +4,7 @@ class Toy {
     // this.div = document.createElement('img');
     // this.div.setAttribute('id', 'dog-div');
     const container = document.querySelector('#container');
-    this.SPEED = 60;
+    this.SPEED = 45;
     this.moving = true;
 
     // how long bone should remain on ground before deleting itself
