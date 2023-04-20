@@ -1,6 +1,6 @@
 body {
   background-image: url(https://media.istockphoto.com/id/1309764268/vector/fence-and-green-lawn-rural-landscape-background-vector-garden-backyard-with-wooden-hedge.jpg?s=612x612&w=0&k=20&c=BBkjcHwOQwBdRyHgXbb0iFtXTU26djYloUyLVv0SRM4=);
-  background-size: cover;
+  background-size:auto;
 }
 
 h1{
@@ -60,7 +60,7 @@ h1{
 #bone {
   position: absolute;
   width: 25px;
-  height: 10px; 
+  height: 10px;
 }
 
 .btn {
