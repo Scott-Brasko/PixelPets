@@ -3,6 +3,10 @@ body {
   background-size: cover;
 }
 
+h1{
+  font-size: 1.2rem;
+}
+
 #container {
   width: 350px;
   height: 30px;
@@ -44,11 +48,17 @@ body {
   position: absolute;
 }
 
+#bone {
+  position: absolute;
+  width: 25px;
+  height: 10px; 
+}
+
 .btn {
   font-family: 'Press Start 2P';
-  font-size: .6rem;
+  font-size: .5rem;
   margin: 8px;
-  padding: 10px 21px;
+  padding: 8px 16.8px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -73,5 +83,5 @@ body {
 }
 
 .btn:active{
-  transform: scale(0.95); 
+  transform: scale(0.95);
 }
