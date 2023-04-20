@@ -1,4 +1,77 @@
+body {
+  background-image: url(https://media.istockphoto.com/id/1309764268/vector/fence-and-green-lawn-rural-landscape-background-vector-garden-backyard-with-wooden-hedge.jpg?s=612x612&w=0&k=20&c=BBkjcHwOQwBdRyHgXbb0iFtXTU26djYloUyLVv0SRM4=);
+  background-size: cover;
+}
+
 #container {
-  width: 600px;
-  height: 400px;
+  width: 350px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#container button {
+  margin: 0 10px;
+}
+
+#dog-div {
+  position: relative;
+  width: 128px;
+  height: 128px;
+}
+
+#dog {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  /* left: 0px; */
+}
+
+#heart {
+  width: 25px;
+  height: 25px;
+  top: 15px;
+  left: 73px;
+  position: absolute;
+}
+
+#spaghetti {
+  width: 50px;
+  height: 50px;
+  top: 73px;
+  left: 73px;
+  position: absolute;
+}
+
+.btn {
+  font-family: 'Press Start 2P';
+  font-size: .6rem;
+  margin: 8px;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:hover{
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:active{
+  transform: scale(0.95); 
 }

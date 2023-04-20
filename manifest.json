@@ -1,15 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "TBD",
+  "name": "Bark Twain",
   "description": "Base Level Extension",
   "version": "1.0",
   "icons": {
-    "16": "/assets/walk/walk-1.png",
-    "48": "/assets/walk/walk-1.png",
-    "128": "/assets/walk/walk-1.png"
+    "16": "/assets/sat-1_128x128.png",
+    "48": "/assets/sat-1_128x128.png",
+    "128": "/assets/run-1_128x128.png"
   },
   "action": {
     "default_popup": "pop-up.html",
-    "default_icon": "/assets/walk/walk-1.png"
+    "default_icon": "/assets/sat-1_128x128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }
