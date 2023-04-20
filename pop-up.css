@@ -13,10 +13,19 @@ h1{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 
+#buttonContainer {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  /* margin-bottom: 20px; */
+}
+
+
 #container button {
-  margin: 0 10px;
+  margin: 10px;
 }
 
 #dog-div {

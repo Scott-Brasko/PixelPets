@@ -7,6 +7,9 @@ function main() {
   const container = document.createElement('div');
   container.setAttribute('id', 'container');
 
+  const buttonContainer = document.createElement('div');
+  buttonContainer.setAttribute('id', 'buttonContainer');
+
     // add start button
   const startBtn = document.createElement('button');
   startBtn.setAttribute('id', 'startBtn');
@@ -65,7 +68,7 @@ function main() {
   // updatePetName() -> breaks code :(
 
   // updated petName & ownerName once storage sync works
-  const dog = new Dog(body, `Bark Twain`, `Chewberry Mudman`);
+  const dog = new Dog(container, `Bark Twain`, `Chewberry Mudman`);
   const title = document.querySelector('h1');
   title.setAttribute('style', `font-family: 'Press Start 2P'`);
   title.innerHTML = dog.name;
@@ -99,4 +102,9 @@ function main() {
     new Toy(body);
 
   });
+  container.appendChild(buttonContainer);
+  buttonContainer.appendChild(startBtn);
+  buttonContainer.appendChild(feedBtn);
+  buttonContainer.appendChild(petBtn);
+  buttonContainer.appendChild(throwToyBtn);
 }
