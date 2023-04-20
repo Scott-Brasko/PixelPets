@@ -7,11 +7,7 @@ function main() {
   const container = document.createElement('div');
   container.setAttribute('id', 'container');
 
-  // create background img
-  const background = document.createElement('img');
-  background.setAttribute('src', './assets/backgrounds/yard.jpg');
-  background.setAttribute('id', 'background');
-  body.appendChild(background);
+
 
   const buttonContainer = document.createElement('div');
   buttonContainer.setAttribute('id', 'buttonContainer');
@@ -37,6 +33,18 @@ function main() {
   throwToyBtn.classList.add('btn');
   throwToyBtn.textContent = 'Throw Toy';
 
+
+  // create background array to iterate through
+  const backgroundArr = ['./assets/backgrounds/yard.jpg', './assets/backgrounds/space.webp', './assets/backgrounds/trees.jpg']
+  let backgroundIndex = 0;
+
+  // create background img
+  const background = document.createElement('img');
+  background.setAttribute('src', backgroundArr[backgroundIndex]);
+  background.setAttribute('id', 'background');
+  body.appendChild(background);
+
+  // we now append to buttonContainer, so these are commented;
   // container.appendChild(startBtn);
   // container.appendChild(feedBtn);
   // container.appendChild(petBtn);
