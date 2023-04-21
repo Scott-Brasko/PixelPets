@@ -6,4 +6,3 @@ To install this extension:
  * Enable developer mode
  * Select 'Load unpacked' and load the project folder
  
- ![jump gif](https://github.com/Scott-Brasko/PixelPets/blob/main/assets/q328km.gif?raw=true)
