@@ -1,4 +1,4 @@
-# hackathon-chrome-extension
+# PixelPets
 To install this extension:
  * Go to the extensions menu within a chromium browser
  * Enable developer mode
