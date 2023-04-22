@@ -11,10 +11,14 @@ class Dog {
     this.leftPosition = 0;
     this.currentDirection = 'right';
     this.directions = ['right', 'left'];
+
     // frame prop - keep track of current frame
     this.frame = 1;
+
+    // number of frames before switching to next idle animation
     this.randomizerFrameCounter = 0;
     this.randomizerFrameMax = 50;
+
     // state prop - default idle
     // idle
     // eat
@@ -31,10 +35,17 @@ class Dog {
     this.petStateArray = ['sit', 'sat', 'sat', 'sat'];
     this.specialIndex = 0;
 
+    // how long to stay idle before walking
+    this.idleDuration = 80;
+
     // walk duration
     this.timeToWalk = false;
     this.timeToWalkIncrement = 0;
-    this.timeToWalkMax = 80;
+    // walk duration randomizer min and max
+    this.walkDurationMax = 80;
+    this.walkDurationMin = 40;
+    this.timeToWalkMax = this.calculateWalkDuration();
+
 
     // set how long heart sticks around after pet
     this.heartMax = 100;
@@ -55,6 +66,8 @@ class Dog {
       sniffwalk: 8,
       walk: 5,
     };
+
+    // create div that dog img exists within
     this.div = document.createElement('div');
     this.div.setAttribute('id', 'dog-div');
 
@@ -69,7 +82,6 @@ class Dog {
     this.div.appendChild(this.node);
 
     // recursively call monitor method (checks state)
-    // use settime out
     setTimeout(this.monitor.bind(this), this.SPEED);
   }
 
@@ -93,6 +105,7 @@ class Dog {
       this.currentDirection = this.directions[Math.floor(Math.random() * 2)];
       return setTimeout(this.move.bind(this), this.SPEED);
     }
+
     if (this.randomizerFrameCounter >= this.randomizerFrameMax) {
       this.state = this.regularStateArray[Math.floor(Math.random() * 2)];
       this.randomizerFrameCounter = 0;
@@ -252,12 +265,29 @@ class Dog {
   }
 
   timeToWalkCheck() {
-    if (this.timeToWalkIncrement === this.timeToWalkMax) {
-      this.timeToWalk = !this.timeToWalk;
+    // if idle and we've waited idle duration, flip to run
+    if (this.timeToWalk === false && this.timeToWalkIncrement === this.idleDuration) {
+      // console.log(this.timeToWalkIncrement)
+      this.timeToWalk = true;
+      this.timeToWalkMax = this.calculateWalkDuration();
       this.timeToWalkIncrement = 0;
     }
+
+    // stop walking once we've hit our walk max
+    else if (this.timeToWalk === true && this.timeToWalkIncrement === this.timeToWalkMax) {
+      console.log(this.timeToWalkIncrement)
+      this.timeToWalk = false;
+      // this.timeToWalkMax = this.calculateWalkDuration();
+      // console.log(this.timeToWalkMax);
+      this.timeToWalkIncrement = 0;
+    }
+
     this.timeToWalkIncrement++;
   }
+
+  calculateWalkDuration() {
+    return Math.floor(Math.random() * (this.walkDurationMax - this.walkDurationMin + 1) + this.walkDurationMin);
+  } 
 
   jump(num) {
     if (num === undefined) num = 11;
