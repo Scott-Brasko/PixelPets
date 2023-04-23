@@ -19,6 +19,9 @@ class Dog {
     this.randomizerFrameCounter = 0;
     this.randomizerFrameMax = 50;
 
+    // how far dog moves during each frame
+    this.moveDistance = 6;
+
     // state prop - default idle
     // idle
     // eat
@@ -46,14 +49,22 @@ class Dog {
     this.walkDurationMin = 40;
     this.timeToWalkMax = this.calculateWalkDuration();
 
-
     // set how long heart sticks around after pet
     this.heartMax = 100;
     this.heartCounter = 0;
     this.heartOn = false;
 
+    // choose random move animation for move array
     this.moveIndex = Math.floor(Math.random() * 3);
     this.moveArray = ['sniffwalk', 'run', 'walk'];
+
+    // is dog chasing toy?
+    this.chaseToyState = false;
+    this.toyDestination = null;
+    this.toyBeingChased = null;
+
+    // dog offset (width of dog)
+    this.dogOffset = 90;
 
     this.stateMaxFrames = {
       idle1: 5,
@@ -91,15 +102,19 @@ class Dog {
   // walk
   // run
   monitor() {
-
     if (this.petState === true)
       return setTimeout(this.pet.bind(this), this.SPEED);
 
     if (this.feedState === true)
       return setTimeout(this.feed.bind(this), this.SPEED);
 
+    // check if it's time to talk or to remove the heart
     this.timeToWalkCheck();
     this.heartCheck();
+
+    if (this.chaseToyState === true) {
+      return this.chaseToySetup(this.toy);
+    }
 
     if (this.timeToWalk === true) {
       this.currentDirection = this.directions[Math.floor(Math.random() * 2)];
@@ -212,26 +227,31 @@ class Dog {
   }
 
   move() {
+    // check if heart should stick around
     this.heartCheck();
 
-    if (this.petState === true || this.feedState === true) {
+    // stop our run if feed or pet or chaseToy is true
+    if (this.petState === true || this.feedState === true || this.chaseToyState === true) {
       // this.timeToWalk = false;
 
       return this.monitor();
     }
 
-    // randomly jump if running
+    // randomly jump if running and not chasing toy
     if (
       this.moveArray[this.moveIndex] === 'run' &&
       this.frame === 3 &&
-      Math.floor(Math.random() * 15) === 0
+      Math.floor(Math.random() * 15) === 0 &&
+      this.chaseToyState === false
     ) {
       this.frame++;
       return setTimeout(this.jump.bind(this), this.SPEED);
     }
 
+    // check if we're done walking
     this.timeToWalkCheck();
 
+    // stop walking
     if (this.timeToWalk === false) {
       this.frame = 1;
       this.state = 'idle1';
@@ -239,46 +259,56 @@ class Dog {
       return setTimeout(this.monitor.bind(this), this.SPEED);
     }
 
+    this.moveAndSetImg()
+
+    // run recursively until timeToWalk is false
+    setTimeout(this.move.bind(this), this.SPEED);
+  }
+
+  moveAndSetImg() {
+    // check if we need to start our animation over
     if (this.frame === this.stateMaxFrames[this.moveArray[this.moveIndex]])
       this.frame = 1;
     else this.frame++;
 
+    // if right, move right
     if (this.currentDirection === 'right') {
       this.div.style.transform = 'scaleX(1)';
-      this.div.style.left = `${(this.leftPosition += 6)}px`;
+      this.div.style.left = `${(this.leftPosition += this.moveDistance)}px`;
     }
 
+    // if left, move left
     if (this.currentDirection === 'left') {
       this.div.style.transform = 'scaleX(-1)';
-      this.div.style.left = `${(this.leftPosition -= 6)}px`;
+      this.div.style.left = `${(this.leftPosition -= this.moveDistance)}px`;
     }
 
-    // console.log(this.node.getAttribute('src'));
+    // moveIndex and frame are updated, select new image for current frame
     this.node.setAttribute(
       'src',
       `./assets/${this.moveArray[this.moveIndex]}/${
         this.moveArray[this.moveIndex]
       }-${this.frame}.png`
     );
-
-    setTimeout(this.move.bind(this), this.SPEED);
   }
 
   timeToWalkCheck() {
     // if idle and we've waited idle duration, flip to run
-    if (this.timeToWalk === false && this.timeToWalkIncrement === this.idleDuration) {
-      // console.log(this.timeToWalkIncrement)
+    if (
+      this.timeToWalk === false &&
+      this.timeToWalkIncrement === this.idleDuration
+    ) {
       this.timeToWalk = true;
       this.timeToWalkMax = this.calculateWalkDuration();
       this.timeToWalkIncrement = 0;
     }
 
     // stop walking once we've hit our walk max
-    else if (this.timeToWalk === true && this.timeToWalkIncrement === this.timeToWalkMax) {
-      console.log(this.timeToWalkIncrement)
+    else if (
+      this.timeToWalk === true &&
+      this.timeToWalkIncrement === this.timeToWalkMax
+    ) {
       this.timeToWalk = false;
-      // this.timeToWalkMax = this.calculateWalkDuration();
-      // console.log(this.timeToWalkMax);
       this.timeToWalkIncrement = 0;
     }
 
@@ -286,8 +316,11 @@ class Dog {
   }
 
   calculateWalkDuration() {
-    return Math.floor(Math.random() * (this.walkDurationMax - this.walkDurationMin + 1) + this.walkDurationMin);
-  } 
+    return Math.floor(
+      Math.random() * (this.walkDurationMax - this.walkDurationMin + 1) +
+        this.walkDurationMin
+    );
+  }
 
   jump(num) {
     if (num === undefined) num = 11;
@@ -297,12 +330,12 @@ class Dog {
     this.node.setAttribute('src', `./assets/jump/jump-${num}.png`);
     if (this.currentDirection === 'right') {
       this.div.style.transform = 'scaleX(1)';
-      this.div.style.left = `${(this.leftPosition += 8)}px`;
+      this.div.style.left = `${(this.leftPosition += this.moveDistance)}px`;
     }
 
     if (this.currentDirection === 'left') {
       this.div.style.transform = 'scaleX(-1)';
-      this.div.style.left = `${(this.leftPosition -= 8)}px`;
+      this.div.style.left = `${(this.leftPosition -= this.moveDistance)}px`;
     }
     num--;
     setTimeout(this.jump.bind(this), this.SPEED, num);
@@ -310,7 +343,7 @@ class Dog {
 
   heartCheck() {
     if (this.heartOn === true) {
-      this.heartCounter++
+      this.heartCounter++;
       if (this.heartCounter >= this.heartMax) {
         const heart = document.querySelector('#heart');
         heart.remove();
@@ -318,5 +351,48 @@ class Dog {
         this.heartOn = false;
       }
     }
+  }
+
+  chaseToySetup(toy) {
+    // round destination to closest move multiple
+    this.toyDestination = Math.ceil(toy.leftPosition/this.moveDistance)*this.moveDistance;
+
+    if (this.leftPosition < this.toyDestination) {
+      this.currentDirection = 'right';
+    } else this.currentDirection = 'left';
+
+    this.moveIndex = 1;
+
+    return this.chaseToy();
+  }
+
+  chaseToy() {
+    // if moving right, need offset to account for dog width
+    const offset = this.currentDirection === 'right' ? this.dogOffset : 0;
+
+    // to-do: do some sort of check to see if bone has landed 
+
+    if (this.leftPosition === this.toyDestination - offset)  {
+      this.chaseToyState = false;
+      // reset walk increment so dog doesn't immediately walk
+      this.timeToWalkIncrement = 0;
+      // reset frame
+      this.frame = 1;
+      // randomize next move;
+      this.moveIndex = Math.floor(Math.random() * 3);
+      // reset toy
+      this.toy = null;
+
+      // to-do: sit here and eventually trigger toy deletion
+
+      return setTimeout(this.monitor.bind(this), this.SPEED);
+    }
+    this.moveAndSetImg()
+
+    setTimeout(this.chaseToy.bind(this), this.SPEED);
+  }
+
+  setToy(toy) {
+    this.toy = toy;
   }
 }

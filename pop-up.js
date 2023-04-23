@@ -139,7 +139,18 @@ function main() {
   });
 
   throwToyBtn.addEventListener('click', () => {
-    new Toy(body);
+    // don't generate toy directly on dog
+    const dogMin = dog.leftPosition;
+    const dogMax = dogMin + dog.dogOffset;
+
+    let toyLocation = Math.floor(Math.random() * (Number(getComputedStyle(container).width.replace('px', '') - 30) - 30) + 30);
+    while (toyLocation >= dogMin && toyLocation <= dogMax) toyLocation = Math.floor(Math.random() * (Number(getComputedStyle(container).width.replace('px', '') - 30) - 30) + 30);
+
+    const toy = new Toy(body, toyLocation);
+    if (dog.chaseToyState === false) {
+      dog.setToy(toy);
+      dog.chaseToyState = true;
+    }
   });
 
   container.appendChild(buttonContainer);

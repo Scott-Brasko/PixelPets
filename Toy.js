@@ -1,6 +1,6 @@
 // dog constructor (name)
 class Toy {
-  constructor(body) {
+  constructor(body, location) {
     // this.div = document.createElement('img');
     // this.div.setAttribute('id', 'dog-div');
     const container = document.querySelector('#container');
@@ -14,7 +14,7 @@ class Toy {
     this.peaked = false;
     // where bone starts
     this.topPosition = 100;
-    this.leftPosition = Math.floor(Math.random() * Number(getComputedStyle(container).width.replace('px', '')));
+    this.leftPosition = location;
     this.rotateVal = 0;
 
 
